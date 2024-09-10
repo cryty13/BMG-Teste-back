@@ -1,0 +1,7 @@
+# Ignorar arquivos de configuração JSON
+appsettings.Development.json
+
+# Outros arquivos e diretórios a serem ignorados
+node_modules/
+dist/
+.env
