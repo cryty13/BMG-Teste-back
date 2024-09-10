@@ -25,7 +25,7 @@ namespace BMG.Services
 
             _context.Clients.Add(client);
             _context.SaveChanges();
-            SendEmail(client);
+            // SendEmail(client);
             return client;
         }
 
@@ -38,10 +38,12 @@ namespace BMG.Services
         {
             if (string.IsNullOrEmpty(search))
             {
-                throw new ArgumentNullException(nameof(search));
+                return _context.Clients.ToList();
             }
-
-            return _context.Clients.Where(c => c.Name.Contains(search)).ToList();
+            else
+            {
+                return _context.Clients.Where(c => c.Name.Contains(search)).ToList();
+            }
         }
 
         public void DeleteClient(int id)
@@ -49,7 +51,7 @@ namespace BMG.Services
             var client = _context.Clients.Find(id);
             if (client != null)
             {
-                _context.Clients.Remove(client);
+                client.status = false;
                 _context.SaveChanges();
             }
         }

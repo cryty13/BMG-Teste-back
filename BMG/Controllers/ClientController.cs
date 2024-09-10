@@ -18,7 +18,7 @@ namespace BMG.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllClients([FromQuery] string search)
+        public IActionResult GetAllClients([FromQuery] string search = null)
         {
             var clients = _clientService.GetAllClients(search);
             return Ok(clients);
