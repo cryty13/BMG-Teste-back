@@ -36,9 +36,9 @@ namespace BMG.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddClient([FromBody] Client client)
+        public IActionResult AddClient([FromBody] Cliente client)
         {
-            _logger.LogInformation("Adding a new client: {ClientName}", client.Name);
+            _logger.LogInformation("Adding a new client: {ClientName}", client.Nome);
             _clientService.AddClient(client);
             return CreatedAtAction(nameof(GetClientById), new { id = client.Id }, client);
         }

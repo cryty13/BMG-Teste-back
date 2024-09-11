@@ -16,46 +16,46 @@ namespace BMG.Services
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public Client AddClient(Client client)
+        public Cliente AddClient(Cliente client)
         {
             if (client == null)
             {
                 throw new ArgumentNullException(nameof(client));
             }
 
-            _context.Clients.Add(client);
+            _context.Client.Add(client);
             _context.SaveChanges();
             // SendEmail(client);
             return client;
         }
 
-        public Client GetClientById(int id)
+        public Cliente GetClientById(int id)
         {
-            return _context.Clients.Find(id);
+            return _context.Client.Find(id);
         }
 
-        public IEnumerable<Client> GetAllClients(string search)
+        public IEnumerable<Cliente> GetAllClients(string search)
         {
             if (string.IsNullOrEmpty(search))
             {
-                return _context.Clients.ToList();
+                return _context.Client.ToList();
             }
             else
             {
-                return _context.Clients.Where(c => c.Name.Contains(search)).ToList();
+                return _context.Client.Where(c => c.Nome.Contains(search)).ToList();
             }
         }
 
         public void DeleteClient(int id)
         {
-            var client = _context.Clients.Find(id);
+            var client = _context.Client.Find(id);
             if (client != null)
             {
-                client.status = false;
+                client.Status = false;
                 _context.SaveChanges();
             }
         }
-        public void SendEmail(Client client)
+        public void SendEmail(Cliente client)
         {
             // Configurações do SMTP
             SmtpClient _client = new SmtpClient("smtp.gmail.com", 587);

@@ -15,6 +15,7 @@ namespace BMG.Tests
         {
             var options = new DbContextOptionsBuilder<ClientContext>()
                 .UseInMemoryDatabase(databaseName: "BMGTest")
+                .EnableSensitiveDataLogging()
                 .Options;
 
             var context = new ClientContext(options);
@@ -25,7 +26,23 @@ namespace BMG.Tests
         public void AddClient_ShouldAddClient()
         {
             var service = GetClientService();
-            var client = new Client { Name = "Test Client", Email = "test@example.com", Phone = "123456789" };
+            var client = new Cliente
+            {
+                Nome = "Test Client",
+                Email = "test@example.com",
+                Telefone = "123456789",
+                Cep = "12345678",
+                Logradouro = "Logradouro",
+                Complemento = "Complemento",
+                Bairro = "Bairro",
+                Cidade = "Cidade",
+                // Estado = "Estado",
+                Numero = 123,
+                UF = "SP",
+                Status = true,
+                DataCriacao = DateTime.Now,
+                DataExclusao = null
+            };
 
             service.AddClient(client);
 
@@ -36,8 +53,8 @@ namespace BMG.Tests
         public void GetAllClients_ShouldReturnAllClients()
         {
             var service = GetClientService();
-            service.AddClient(new Client { Name = "Client 1", Email = "client1@example.com", Phone = "123456789" });
-            service.AddClient(new Client { Name = "Client 2", Email = "client2@example.com", Phone = "987654321" });
+            service.AddClient(new Cliente { Nome = "Client 1", Email = "client1@example.com", Telefone = "123456789" });
+            service.AddClient(new Cliente { Nome = "Client 2", Email = "client2@example.com", Telefone = "987654321" });
 
             var clients = service.GetAllClients(null);
 
@@ -48,19 +65,19 @@ namespace BMG.Tests
         public void GetClientById_ShouldReturnClient()
         {
             var service = GetClientService();
-            var client = new Client { Name = "Test Client", Email = "test@example.com", Phone = "123456789" };
+            var client = new Cliente { Nome = "Test Client", Email = "test@example.com", Telefone = "123456789" };
             service.AddClient(client);
 
             var retrievedClient = service.GetClientById(client.Id);
 
-            Assert.Equal(client.Name, retrievedClient.Name);
+            Assert.Equal(client.Nome, retrievedClient.Nome);
         }
 
         [Fact]
         public void DeleteClient_ShouldRemoveClient()
         {
             var service = GetClientService();
-            var client = new Client { Name = "Test Client", Email = "test@example.com", Phone = "123456789" };
+            var client = new Cliente { Nome = "Test Client", Email = "test@example.com", Telefone = "123456789" };
             service.AddClient(client);
 
             service.DeleteClient(client.Id);

@@ -9,6 +9,10 @@ namespace BMG.Data
         {
         }
 
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<Cliente> Client { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Cliente>().ToTable("tb_cliente");
+        }
     }
 }
