@@ -56,3 +56,15 @@ Clone o repositório para sua máquina local:
 
 ```bash
 git clone https://github.com/cryty13/BMG-Teste-back.git
+```
+
+### 2. Clonando o Repositório
+
+collection to postman
+
+Uma coleção do Postman foi incluída para facilitar a interação com a API. Para importar a coleção:
+
+    Abra o Postman.
+    Clique em Importar.
+    Selecione o arquivo REST API BMG.postman_collection.json incluído na pasta raiz deste repositório.
+    Importe a coleção para visualizar e testar os endpoints da API.
