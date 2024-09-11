@@ -15,7 +15,27 @@ Para rodar o projeto, certifique-se de ter o seguinte instalado em sua máquina:
 1. Crie um banco de dados no **MariaDB** ou **MySQL**:
 
     ```sql
-    CREATE DATABASE NomeDoBanco;
+    CREATE DATABASE BMG;
+
+    -- BMG.tb_cliente definition
+    CREATE TABLE `tb_cliente` (
+      `idCliente` int(11) NOT NULL AUTO_INCREMENT,
+      `nome` varchar(100) NOT NULL,
+      `email` varchar(200) NOT NULL,
+      `telefone` varchar(20) NOT NULL,
+      `cep` varchar(8) DEFAULT NULL,
+      `logradouro` varchar(100) DEFAULT NULL,
+      `complemento` varchar(100) DEFAULT NULL,
+      `bairro` varchar(100) DEFAULT NULL,
+      `estado` varchar(100) DEFAULT NULL,
+      `cidade` varchar(100) DEFAULT NULL,
+      `numero` int(11) DEFAULT NULL,
+      `UF` varchar(2) DEFAULT NULL,
+      `status` bit(1) DEFAULT b'1',
+      `data_criacao` datetime DEFAULT current_timestamp(),
+      `data_exclusao` datetime DEFAULT NULL,
+      PRIMARY KEY (`idCliente`)
+    ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
     ```
 
 2. Atualize a string de conexão no arquivo `appsettings.json` com as credenciais corretas para acessar o banco de dados:
