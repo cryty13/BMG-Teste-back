@@ -2,3 +2,8 @@ BMG/appsettings.Development.json
 BMG/appsettings.json
 BMG/bin/Debug/net8.0/appsettings.Development.json
 BMG/bin/Debug/net8.0/appsettings.json
+
+BMG/bin/
+BMG/bin/Debug/*
+BMG/obj/
+BMG/obj/Debug/*

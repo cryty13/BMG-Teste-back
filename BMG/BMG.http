@@ -1,4 +1,4 @@
-@BMG_HostAddress = http://localhost:5000
+@BMG_HostAddress = http://localhost:9005
 
 GET {{BMG_HostAddress}}/weatherforecast/
 Accept: application/json
