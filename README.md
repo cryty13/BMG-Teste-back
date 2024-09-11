@@ -1,4 +1,4 @@
-# Nome do Projeto
+# BMG Back
 
 Este projeto é uma aplicação **.NET Core 8.0** que utiliza **MariaDB** como banco de dados e o **Entity Framework Core** para mapeamento objeto-relacional (ORM). O objetivo deste projeto é criar um crud para um teste do BMG Seguridade.
 
